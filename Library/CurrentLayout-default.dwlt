@@ -71,10 +71,10 @@ MonoBehaviour:
     y: 0
     width: 907
     height: 460
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 402, y: 221}
+  m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 143
+  controlID: 130
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -97,7 +97,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 781
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &5
 MonoBehaviour:
@@ -164,10 +164,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 880, y: 492}
+  m_MinSize: {x: 878, y: 492}
   m_MaxSize: {x: 18003, y: 14042}
   vertical: 0
-  controlID: 141
+  controlID: 60
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -215,10 +215,10 @@ MonoBehaviour:
     y: 0
     width: 907
     height: 731
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 142
+  controlID: 129
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -361,7 +361,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -421,23 +421,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 04530000
       m_LastClickedID: 0
-      m_ExpandedIDs: 9289f7ffc493f7ff809bf7ff50a2f7ff1caaf7ff08b1f7ff4cb9f7ff06c0f7ffe0c6f7ffdccdf7ff00f9f7ff3e01f8ffde25f8ffba2cf8ff3a53f8ffbc53f8ffaa6ff8ff00f6f8ff2cfff8ff4a0bf9ff201af9fffa29f9ffe63ff9ff864df9ff425cf9ff466cf9ff8cc8f9ff2ecff9ff06d6f9ff92dcf9ff2e18faffc01efaffbc25faff462cfaff0033faffaa39faffe640faff0047fafff04dfaff6854faff605ffaffb466faff846dfaff8474faff707cfaff9c99faffaac4faff4ecbfaffeee0faff16effaff84f6faffc204fbff840dfbffea14fbff0e37fbff8242fbff704dfbffb258fbff7470fbff5a7ffcff068efcffd499fcff44a8fcff08b7fcff0ac3fcffe6dffcff1265fdff887bfdff5084fdff4492fdff409afdff34a5fdff2eadfdff1eb8fdffa8d1fdffb0d9fdffa8fafdff7e02feffc823feff4a24feff4235feff7a5cfeff045dfeff6e6efeff747efeff5299feff2cdffeff0873fffffa7affffb482ffff9c8bffff889bffff6ebeffff88c7ffff32ceffffbad7ffffb6dfffff68fbffffc82f0100dea80100f6c901001698020072b30200f0b60200722d03002edb030036f5030074fe03009e000400620504006a080400a4360400c23a0400
+      m_ExpandedIDs: 7a26ffff1e6dffff96ceffff68fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: CFXR Firework 3 (Blue)
+        m_OriginalName: CFXR Firework 3 (Blue)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 17296
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -483,9 +483,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -10.7382555, y: -5.780665, z: 7.0471697}
+    m_Target: {x: 3.222895, y: 9.614615, z: 2.8924427}
     speed: 2
-    m_Value: {x: -10.7382555, y: -5.780665, z: 7.0471697}
+    m_Value: {x: 3.222895, y: 9.614615, z: 2.8924427}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -531,13 +531,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.63531, y: -0.06158062, z: 0.051052254, w: 0.76835704}
+    m_Target: {x: 0.5278114, y: 0.0046561747, z: -0.0028162717, w: 0.8495837}
     speed: 2
-    m_Value: {x: 0.6351862, y: -0.06156862, z: 0.051042303, w: 0.7682073}
+    m_Value: {x: 0.527704, y: 0.0046552275, z: -0.0028156987, w: 0.84941083}
   m_Size:
-    m_Target: 13.319036
+    m_Target: 6.000018
     speed: 2
-    m_Value: 13.319036
+    m_Value: 6.000018
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -671,14 +671,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scenes
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\brky-\Documents\GitHub\The Maze Painter
+  m_LastProjectPath: C:\Users\brky-\Documents\GitHub\The-Maze-Painter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 16}
-    m_SelectedIDs: 7c360000
-    m_LastClickedID: 13948
-    m_ExpandedIDs: 000000006836000000ca9a3b
+    m_SelectedIDs: 64360000
+    m_LastClickedID: 13924
+    m_ExpandedIDs: 000000005436000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -706,7 +706,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000068360000
+    m_ExpandedIDs: 0000000054360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

@@ -38,6 +38,10 @@ public class LevelControl : MonoBehaviour
         {
             levelpainted = 44;
         }
+        if (PlayerPrefs.GetInt("level") == 7)
+        {
+            levelpainted = 69;
+        }
         rb = player.GetComponent<Rigidbody>();
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
@@ -158,7 +162,6 @@ public class LevelControl : MonoBehaviour
             {
                 player.transform.DOMoveY(0.5f, 0.5f).SetEase(movement).OnComplete(() =>
                 {
-                    Debug.Log("çalıştı");
                     StartCoroutine(ExampleCoroutine5());
                 });
 
@@ -169,6 +172,29 @@ public class LevelControl : MonoBehaviour
 
         }
         if (PlayerPrefs.GetInt("painted") == levelpainted && PlayerPrefs.GetInt("level") == 6)
+        {
+            Debug.Log("OYUN BİTTİ");
+            PlayerPrefs.SetInt("painted", 0);
+            PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
+            rb.constraints = RigidbodyConstraints.FreezePosition;
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(3).gameObject.SetActive(true);
+            player.transform.DOMoveY(4f, 0.5f).SetEase(movement).OnComplete(() =>
+            {
+                player.transform.DOMoveY(0.5f, 0.5f).SetEase(movement).OnComplete(() =>
+                {
+                    StartCoroutine(ExampleCoroutine6());
+                });
+
+
+            });
+            player.transform.DOMoveZ(4.5f, 0.1f);
+
+
+        }
+        if (PlayerPrefs.GetInt("painted") == levelpainted && PlayerPrefs.GetInt("level") == 7)
         {
             Debug.Log("OYUN BİTTİ");
             PlayerPrefs.SetInt("painted", 0);
@@ -242,5 +268,11 @@ public class LevelControl : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Level6");
+    }
+    IEnumerator ExampleCoroutine6()
+    {
+
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Level7");
     }
 }
