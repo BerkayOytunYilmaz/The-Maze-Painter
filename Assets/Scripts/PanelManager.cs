@@ -15,7 +15,7 @@ public class PanelManager : MonoBehaviour
     void Start()
     {
         leveltext = level.GetComponent<Text>();
-        leveltext.text = "Level " + PlayerPrefs.GetInt("level");
+        leveltext.text = "Level " + PlayerPrefs.GetInt("fakelevel");
     }
 
     // Update is called once per frame

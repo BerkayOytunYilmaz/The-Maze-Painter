@@ -19,6 +19,10 @@ public class Move : MonoBehaviour
     float horizontalSpeed = 2.0f;
     float verticalSpeed = 2.0f;
     public AudioSource watersound;
+    public Vector3 direction;
+
+    public float playerSpeed=25f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,95 +34,21 @@ public class Move : MonoBehaviour
     void Update()
     {
         speed = rb.velocity.magnitude;
-        //Debug.Log("speed= "+speed);
 
         mousePos = Input.mousePosition;
 
         float h = horizontalSpeed * Input.GetAxis("Mouse X");
         float v = verticalSpeed * Input.GetAxis("Mouse Y");
-        //Debug.Log("x değeri " + h + (" y değeri " + v));
-
-        //if (Input.GetMouseButtonDown(0))
-        //{
-
-        //    x1 = mousePos.x;
-        //    y1 = mousePos.y;
-        //    x2 = mousePos.x;
-        //    y2 = mousePos.y;
-        //}
-        //if (Input.GetMouseButtonUp(0))
-        //{
-        //    x2 = mousePos.x;
-        //    y2 = mousePos.y;
-        //}
-
-
-        //if (y2-y1>400f&& speed<25f)
-        //{
-
-        //    rb.velocity = new Vector3(0, 0, 50);
-        //    y1 = 0f;
-        //    y2 = 0f;
-        //}
-        //if (x2-x1>400f && speed < 25f)
-        //{
-
-        //    rb.velocity = new Vector3(50, 0, 0);
-        //    x1 = 0f;
-        //    x2 = 0f;
-        //}
-        //if (x1-x2>400 && speed < 25f)
-        //{
-
-        //    rb.velocity = new Vector3(-50, 0, 0);
-
-        //    x1 = 0f;
-        //    x2 = 0f;
-        //}
-        //if (y1 - y2 > 400f && speed < 25f)
-        //{
-
-        //    rb.velocity = new Vector3(0, 0, -50);
-        //    y1 = 0f;
-        //    y2 = 0f;
-        //}
-
-
-
+        rb.velocity = direction * playerSpeed;
 
         if (Input.GetMouseButton(0))
         {
 
 
-            if (v > 0.5f && speed < 25f)
+            if (v > 0.5f && speed < 1f)
             {
 
-                rb.velocity = new Vector3(0, 0, 50);
-                if (forsound==false)
-                {
-                    forsound = true;
-                    StartCoroutine(ExampleCoroutine());
-                }
-
-
-
-
-            }
-            if (h > 0.5f && speed < 25f)
-            {
-
-                rb.velocity = new Vector3(50, 0, 0);
-                if (forsound == false)
-                {
-                    forsound = true;
-                    StartCoroutine(ExampleCoroutine());
-                }
-
-            }
-            if (h < -0.5f && speed < 25f)
-            {
-
-                rb.velocity = new Vector3(-50, 0, 0);
+                direction = Vector3.forward;
                 if (forsound == false)
                 {
                     forsound = true;
@@ -126,11 +56,13 @@ public class Move : MonoBehaviour
                 }
 
 
+
+
             }
-            if (v < -0.5f && speed < 25f)
+            if (h > 0.5f && speed < 1f)
             {
 
-                rb.velocity = new Vector3(0, 0, -50);
+                direction = Vector3.right;
                 if (forsound == false)
                 {
                     forsound = true;
@@ -138,6 +70,30 @@ public class Move : MonoBehaviour
                 }
 
             }
+            if (h < -0.5f && speed < 1f)
+            {
+
+                direction = Vector3.left;
+                if (forsound == false)
+                {
+                    forsound = true;
+                    StartCoroutine(ExampleCoroutine());
+                }
+
+
+            }
+            if (v < -0.5f && speed < 1f)
+            {
+
+                direction = Vector3.back;
+                if (forsound == false)
+                {
+                    forsound = true;
+                    StartCoroutine(ExampleCoroutine());
+                }
+
+            }
+
         }
 
 
@@ -149,7 +105,7 @@ public class Move : MonoBehaviour
 
         watersound.Play();
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.2f); // watersound doesn't work all the time
         forsound = false;
     }
 

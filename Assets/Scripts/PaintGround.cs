@@ -43,7 +43,7 @@ public class PaintGround : MonoBehaviour
         if (other.gameObject.tag=="player"&& currentcolor!=nextcolor)
         {
             currentcolor.DOColor(nextcolor.color, 0.1f);
-            currentcolor = nextcolor;
+            currentcolor = nextcolor; // because of painted doesn't increase again
             PlayerPrefs.SetInt("painted", PlayerPrefs.GetInt("painted") + 1);
 
         }
