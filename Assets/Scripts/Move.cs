@@ -7,106 +7,276 @@ public class Move : MonoBehaviour
 {
 
 
-    Rigidbody rb;
-    public float speed;
-    public float x1;
-    public float x2;
-    public float y1;
-    public float y2;
-    public Vector3 mousePos;
+    //Rigidbody rb;
+    //public float speed;
+    //public float x1;
+    //public float x2;
+    //public float y1;
+    //public float y2;
+    //public Vector3 mousePos;
     public bool forsound;
 
-    float horizontalSpeed = 2.0f;
-    float verticalSpeed = 2.0f;
+    //float horizontalSpeed = 2.0f;
+    //float verticalSpeed = 2.0f;
     public AudioSource watersound;
-    public Vector3 direction;
+    //public Vector3 direction;
 
-    public float playerSpeed=25f;
+    //public float playerSpeed = 25f;
 
-    // Start is called before the first frame update
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    rb = GetComponent<Rigidbody>();
+
+    //}
+
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    speed = rb.velocity.magnitude;
+
+    //    mousePos = Input.mousePosition;
+
+    //    float h = horizontalSpeed * Input.GetAxis("Mouse X");
+    //    float v = verticalSpeed * Input.GetAxis("Mouse Y");
+    //    rb.velocity = direction * playerSpeed;
+
+    //    if (h != 0)
+    //    {
+    //        Debug.Log("x " + h);
+    //    }
+    //    if (v != 0)
+    //    {
+    //        Debug.Log("y " + v);
+    //    }
+
+
+    //    if (Input.GetMouseButton(0))
+    //    {
+
+
+    //        if (v > 1f && speed < 1f)
+    //        {
+
+    //            direction = Vector3.forward;
+    //            if (forsound == false)
+    //            {
+    //                forsound = true;
+    //                StartCoroutine(ExampleCoroutine());
+    //            }
+
+
+
+
+    //        }
+    //        if (h > 1f && speed < 1f)
+    //        {
+
+    //            direction = Vector3.right;
+    //            if (forsound == false)
+    //            {
+    //                forsound = true;
+    //                StartCoroutine(ExampleCoroutine());
+    //            }
+
+    //        }
+    //        if (h < -1f && speed < 1f)
+    //        {
+
+    //            direction = Vector3.left;
+    //            if (forsound == false)
+    //            {
+    //                forsound = true;
+    //                StartCoroutine(ExampleCoroutine());
+    //            }
+
+
+    //        }
+    //        if (v < -1f && speed < 1f)
+    //        {
+
+    //            direction = Vector3.back;
+    //            if (forsound == false)
+    //            {
+    //                forsound = true;
+    //                StartCoroutine(ExampleCoroutine());
+    //            }
+
+    //        }
+
+    //    }
+
+
+    //}
+
+    //IEnumerator ExampleCoroutine()
+    //{
+
+
+    //    watersound.Play();
+
+    //    yield return new WaitForSeconds(0.2f); // watersound doesn't work all the time
+    //    forsound = false;
+    //}
+
+
+    public bool isMoving;
+    public bool isReachTheCorner;
+    public float speed = 50f;
+    public float speedy;
+    public Rigidbody rb;
+
+    public int minSwipeRange = 500;
+    Vector3 direction;
+    Vector3 nextWallPos;
+
+    Vector2 swipePosFirst;
+    Vector2 swipePosSecond;
+    Vector2 currentSwipe;
+
+
+
+
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         watersound = GetComponent<AudioSource>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
+
+    private void FixedUpdate()
+    {
+        if (!isMoving && PlayerPrefs.GetInt("finished") == 0)
+        {
+            rb.velocity = speed * direction;
+            StartCoroutine("TimeDelay");
+            Debug.Log("asdasdsd");
+
+
+        }
+        if (nextWallPos != Vector3.zero)
+        {
+            if (Vector3.Distance(transform.position, nextWallPos) < 0.5)
+            {
+                isMoving = false;
+                direction = Vector3.zero;
+                nextWallPos = Vector3.zero;
+            }
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        speed = rb.velocity.magnitude;
+        speedy = rb.velocity.magnitude;
 
-        mousePos = Input.mousePosition;
 
-        float h = horizontalSpeed * Input.GetAxis("Mouse X");
-        float v = verticalSpeed * Input.GetAxis("Mouse Y");
-        rb.velocity = direction * playerSpeed;
-
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && speedy < 1)
         {
-
-
-            if (v > 0.5f && speed < 1f)
+            swipePosFirst = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            //Debug.Log(timer);
+            Debug.Log("tıklandı");
+            if (swipePosSecond != Vector2.zero)
             {
 
-                direction = Vector3.forward;
-                if (forsound == false)
+                currentSwipe = swipePosFirst - swipePosSecond;
+                if (currentSwipe.sqrMagnitude < minSwipeRange)
                 {
-                    forsound = true;
-                    StartCoroutine(ExampleCoroutine());
+                    return;
+                }
+                //currentSwipe.Normalize();
+
+
+
+                //yukarı ve aşağı
+                if (currentSwipe.x > -10f && currentSwipe.x < 10f)
+                {
+
+                    if (currentSwipe.y > 4f)
+                    {
+                        setDirection(Vector3.forward);
+                        if (forsound==false)
+                        {
+                            forsound = true;
+                           StartCoroutine("SoundManager");
+                        }
+
+
+                    }
+                    if (currentSwipe.y < -4f)
+                    {
+                        setDirection(Vector3.back);
+                        StartCoroutine("TimeDelay");
+                        if (forsound == false)
+                        {
+                            forsound = true;
+                            StartCoroutine("SoundManager");
+                        }
+                    }
                 }
 
-
-
-
-            }
-            if (h > 0.5f && speed < 1f)
-            {
-
-                direction = Vector3.right;
-                if (forsound == false)
+                // sağ sol
+                else if (currentSwipe.y > -10f && currentSwipe.y < 10f)
                 {
-                    forsound = true;
-                    StartCoroutine(ExampleCoroutine());
+                    if (currentSwipe.x > 4f)
+                    {
+                        setDirection(Vector3.right);
+                        StartCoroutine("TimeDelay");
+                        if (forsound == false)
+                        {
+                            forsound = true;
+                            StartCoroutine("SoundManager");
+                        }
+                    }
+                    if (currentSwipe.x < -4f)
+                    {
+                        setDirection(Vector3.left);
+                        StartCoroutine("TimeDelay");
+                        if (forsound == false)
+                        {
+                            forsound = true;
+                            StartCoroutine("SoundManager");
+                        }
+                    }
                 }
-
             }
-            if (h < -0.5f && speed < 1f)
-            {
-
-                direction = Vector3.left;
-                if (forsound == false)
-                {
-                    forsound = true;
-                    StartCoroutine(ExampleCoroutine());
-                }
-
-
-            }
-            if (v < -0.5f && speed < 1f)
-            {
-
-                direction = Vector3.back;
-                if (forsound == false)
-                {
-                    forsound = true;
-                    StartCoroutine(ExampleCoroutine());
-                }
-
-            }
+            swipePosSecond = swipePosFirst;
 
         }
 
-
+        if (Input.GetMouseButtonUp(0))
+        {
+            swipePosSecond = Vector2.zero;
+        }
     }
 
-    IEnumerator ExampleCoroutine()
+    public void setDirection(Vector3 forSetDirection)
+    {
+        direction = forSetDirection;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, forSetDirection, out hit, 100f))
+        {
+            nextWallPos = hit.point;
+        }
+        isMoving = false;
+    }
+
+    public IEnumerator TimeDelay()
+    {
+        yield return new WaitForSeconds(5f);
+    }
+
+    public IEnumerator SoundManager()
     {
 
+        
+            watersound.Play();
+        
+        yield return new WaitForSeconds(0.2f);
 
-        watersound.Play();
-
-        yield return new WaitForSeconds(0.2f); // watersound doesn't work all the time
         forsound = false;
     }
 
 }
+
+

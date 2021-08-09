@@ -4511,16 +4511,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c39032f12ad33646ab6da0c5e4976b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  x1: 0
-  x2: 0
-  y1: 0
-  y2: 0
-  mousePos: {x: 0, y: 0, z: 0}
-  forsound: 0
   watersound: {fileID: 0}
-  direction: {x: 0, y: 0, z: 0}
-  playerSpeed: 25
+  isMoving: 0
+  isReachTheCorner: 0
+  speed: 30
+  speedy: 0
+  rb: {fileID: 0}
+  minSwipeRange: 500
 --- !u!54 &875094259
 Rigidbody:
   m_ObjectHideFlags: 0

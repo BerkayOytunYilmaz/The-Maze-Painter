@@ -23,7 +23,7 @@ public class PaintGround : MonoBehaviour
         }
         PlayerPrefs.SetInt("painted", 0);
 
-        
+
         currentcolor = GetComponent<MeshRenderer>().material;
         part = GetComponentInChildren<ParticleSystem>();
 

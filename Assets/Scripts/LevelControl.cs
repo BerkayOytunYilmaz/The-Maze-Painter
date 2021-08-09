@@ -83,6 +83,7 @@ public class LevelControl : MonoBehaviour
 
         starsmanager.SetActive(false);
         stareffect = GetComponent<AudioSource>();
+        PlayerPrefs.SetInt("finished", 0);
     }
 
     // Update is called once per frame
@@ -878,5 +879,8 @@ public class LevelControl : MonoBehaviour
         {
             PlayerPrefs.SetInt("fakestar", 3);
         }
+
+        PlayerPrefs.SetInt("finished", 1);
+
     }
 }
