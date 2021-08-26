@@ -14,11 +14,11 @@ public class Move : MonoBehaviour
     //public float y1;
     //public float y2;
     //public Vector3 mousePos;
-    public bool forsound;
+
 
     //float horizontalSpeed = 2.0f;
     //float verticalSpeed = 2.0f;
-    public AudioSource watersound;
+
     //public Vector3 direction;
 
     //public float playerSpeed = 25f;
@@ -125,7 +125,8 @@ public class Move : MonoBehaviour
     public float speed = 50f;
     public float speedy;
     public Rigidbody rb;
-
+    public AudioSource watersound;
+    public bool forsound;
     public int minSwipeRange = 500;
     Vector3 direction;
     Vector3 nextWallPos;
@@ -149,7 +150,7 @@ public class Move : MonoBehaviour
         {
             rb.velocity = speed * direction;
             StartCoroutine("TimeDelay");
-            Debug.Log("asdasdsd");
+
 
 
         }
@@ -174,8 +175,8 @@ public class Move : MonoBehaviour
         if (Input.GetMouseButton(0) && speedy < 1)
         {
             swipePosFirst = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            //Debug.Log(timer);
-            Debug.Log("tıklandı");
+
+ 
             if (swipePosSecond != Vector2.zero)
             {
 
@@ -184,11 +185,11 @@ public class Move : MonoBehaviour
                 {
                     return;
                 }
-                //currentSwipe.Normalize();
 
 
 
-                //yukarı ve aşağı
+
+                //Forward and Back
                 if (currentSwipe.x > -10f && currentSwipe.x < 10f)
                 {
 
@@ -215,7 +216,7 @@ public class Move : MonoBehaviour
                     }
                 }
 
-                // sağ sol
+                // Right and Left
                 else if (currentSwipe.y > -10f && currentSwipe.y < 10f)
                 {
                     if (currentSwipe.x > 4f)
@@ -272,7 +273,7 @@ public class Move : MonoBehaviour
         
             watersound.Play();
         
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.2f); // watersound doesn't work all the time
 
         forsound = false;
     }
